@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:
+  labels:
+    app: serveurMohamedMoinjie
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: serveurMohamedMoinjie
+  template:
+    metadata:
+      labels:
+        app: serveurMohamedMoinjie
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: serveurMohamedMoinjie
+          image: cloud.canister.io:5000/arhturescriou/node-redis
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: 8080
+            - name: REDIS_URL
+              value: redis://redis.io

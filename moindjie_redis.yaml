@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-mohamedmoindjie
+  labels:
+    app: redis-mohamedmoindjie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-mohamedmoindjie
+  template:
+    metadata:
+      labels:
+        app: redis-mohamedmoindjie
+    spec:
+      containers:
+        - name: redis-mohamedmoindjie
+          image: redis
+          ports:
+            - containerPort: 6379
