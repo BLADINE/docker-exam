@@ -11,4 +11,18 @@
     "moindjie_serveur.yaml" en précisant la clé "kind" :Deployment
     A la suite, on crée un service en s'appuyant du ficher
     "moindjie_service_redis.yaml". On peut donc augmenter le nombre
-    réplicas
+    réplicas.
+    La connexion du service node-redis au service redis se fait par le
+    biais de "imagePullSecrets" et le varibale d'environement
+
+##
+
+    spec :
+      imagePullSecrets:
+        - name: regcred
+
+##
+
+    env:
+      - name: REDIS_URL
+          value: "redis://10.3.147.76:6379"
